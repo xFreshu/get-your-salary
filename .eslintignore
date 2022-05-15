@@ -1,0 +1,4 @@
+# Add folders, files, and glob patterns
+# which should be ignored by the linter
+/node_modules
+/public
