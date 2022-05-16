@@ -1,16 +1,25 @@
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 const Test = styled.div`
-  background-color: red;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   form {
     display: flex;
     flex-direction: column;
+    width: 40%;
+    min-width: 400px;
+    background-color: #f6f6f6;
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+    padding: 20px;
   }
 `;
 
-const Home = () => {
+const Home = ({ getUser }) => {
   const router = useRouter();
   const { register, handleSubmit, watch } = useForm();
   const onSubmit = (data) => {
@@ -24,6 +33,7 @@ const Home = () => {
     } else {
       router.push('/uz');
     }
+    getUser(data);
   };
 
   console.log(watch('example')); // watch input value by passing the name of it
@@ -44,6 +54,8 @@ const Home = () => {
               </option>
             ))}
           </select>
+          <label>Wynagrodzenie brutto:</label>
+          <input {...register('grossSalary')} min="0" type="number" />
           <input type="submit" />
         </form>
       </Test>
