@@ -1,3 +1,31 @@
+import styled from 'styled-components';
+
+const UOPCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f0f0;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: 0.7s;
+  :hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+  div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
+`;
+
 const UOP = ({ user }) => {
   const { name, grossSalary } = user;
   const emerytalna = (grossSalary * 0.0976).toFixed(2);
@@ -10,7 +38,7 @@ const UOP = ({ user }) => {
   return (
     <>
       <h1>UOP</h1>
-      <div>
+      <UOPCard>
         <h2>Cześć, {name}.</h2>
         <div>
           <span>Wynagrodzenie brutto:</span>
@@ -48,7 +76,7 @@ const UOP = ({ user }) => {
           <span>Wynagrodzenie netto:</span>
           <span>{netSalary} zł</span>
         </div>
-      </div>
+      </UOPCard>
     </>
   );
 };
